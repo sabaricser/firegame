@@ -16,13 +16,15 @@ class Player:
         if self.rect.left > 0:
             self.rect.x -= self.speed
             self.direction = 'left'
-            self.image = pygame.transform.flip(self.original_image, True, False)
+            # Tilt 15 degrees left
+            self.image = pygame.transform.rotate(self.original_image, 15)
 
     def move_right(self):
         if self.rect.right < WIDTH:
             self.rect.x += self.speed
             self.direction = 'right'
-            self.image = self.original_image
+            # Tilt 15 degrees right (negative for clockwise)
+            self.image = pygame.transform.rotate(self.original_image, -15)
 
     def move_up(self):
         if self.rect.top > 0:
@@ -62,10 +64,10 @@ class Player:
         pass
 
     def stop_left(self):
-        pass
+        self.image = self.original_image
 
     def stop_right(self):
-        pass
+        self.image = self.original_image
 
     def stop_up(self):
         pass

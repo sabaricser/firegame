@@ -10,6 +10,9 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.centerx = x
         self.rect.bottom = y - 10
         self.speed = 10
+        # Add glow
+        self.glow = pygame.Surface((self.image.get_width() + 10, self.image.get_height() + 10), pygame.SRCALPHA)
+        pygame.draw.circle(self.glow, (100, 200, 255, 100), (self.glow.get_width()//2, self.glow.get_height()//2), self.glow.get_width()//2)
         self.shoot_sound = pygame.mixer.Sound('game_sounds/shooting/shoot.mp3')
         self.shoot_sound.set_volume(0.4)
         self.shoot_sound.play()
